@@ -1,21 +1,41 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
-
+  "description": "Generates URl for Attheviewbox dicom veiwer",
   "icons": {
     "16": "logo192.png",
     "48": "logo192.png",
     "128": "logo192.png"
-},
-
-
-  "description": "Generates URl for Attheviewbox dicom veiwer",
+  },
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-      "default_popup": "index.html",
-      "default_title": "Open the popup"
-  }
-
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "contentScripts.js"
+      ],
+      "matches": [
+        "https://www.pacsbin.com/*"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.pacsbin.com/*"
+      ],
+      "js": ["inject.js"]
+    }
+  ]
 }
-
