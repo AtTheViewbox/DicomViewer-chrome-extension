@@ -80,7 +80,7 @@ const Viewport: React.VFC<ViewportProps> = ({
         viewport.element.addEventListener("mousemove", updateStates);
         viewport.element.addEventListener("wheel", updateStates);
 
-        stack.map((imageId: string) => {
+      stack.map((imageId: string) => {
           cornerstone.imageLoader.loadAndCacheImage(imageId);
         });
 

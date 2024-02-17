@@ -3,7 +3,39 @@ import { MetaDataListContext } from '../Context/DataContext';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { MetaData} from '../utils';
+import { styled } from '@mui/material/styles';
 
+
+
+const SliderS = styled(Slider)(({ theme }) => ({
+  color: '#000000',
+  height: 3,
+  padding: '13px 0',
+  '& .MuiSlider-thumb': {
+    height: 18,
+    width: 18,
+    backgroundColor: '#000000',
+    border: '1px solid currentColor',
+    '&:hover': {
+      boxShadow: '0 0 0 8px rgba(0, 0, 0, 0.16)',
+    },
+    '& .airbnb-bar': {
+      height: 9,
+      width: 1,
+      backgroundColor: 'currentColor',
+      marginLeft: 1,
+      marginRight: 1,
+    },
+  },
+  '& .MuiSlider-track': {
+    height: 2,
+  },
+  '& .MuiSlider-rail': {
+    color: theme.palette.mode === 'dark' ? '#bfbfbf' : '#d8d8d8',
+    opacity: theme.palette.mode === 'dark' ? undefined : 1,
+    height: 2,
+  },
+}));
 const minDistance = 10;
 
 interface SliderProps {
@@ -60,13 +92,14 @@ const SliderComp: React.VFC<SliderProps> = ({metadata,setStateFlag}) => {
   return (
     <>
     <Box sx={{ width: 300 }} >
-      <Slider
+      <SliderS
         value={[metadata.start_slice,metadata.end_slice]}
         onChange={handleChange1}
         valueLabelDisplay="auto"
         disableSwap
         max={max}
         min={1}
+       
       />
 
     </Box>

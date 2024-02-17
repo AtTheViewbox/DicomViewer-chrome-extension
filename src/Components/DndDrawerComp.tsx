@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import Button, { ButtonProps } from '@mui/material/Button';
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import CloseIcon from "@mui/icons-material/Close";
@@ -15,6 +15,55 @@ import DragComp from "./DragComp";
 import DropComp from "./DropComp";
 import { generateGridURL } from "../utils";
 import Typography from "@mui/material/Typography";
+import { styled } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+
+
+
+const ButtonStyle = styled(Button)({
+  whiteSpace: 'normal',
+    appearance: 'none', 
+    backgroundColor: 'transparent', 
+    border: '2px solid #1A1A1A', 
+  borderRadius: 15,
+  boxSizing: 'border-box',
+  color: '#3B3B3B',
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontWeight: 600,
+  lineHeight: 'normal',
+  margin: 0,
+  minHeight: '50px',
+  minWidth: 0,
+  outline: 'none',
+padding:' 8px 12px',
+textAlign: 'center', 
+textDecoration: 'none', 
+transition:' all 300ms cubic-bezier(.23, 1, 0.32, 1)', 
+userSelect: 'none', 
+webkitUserSelect: 'none', 
+touchAction: 'manipulation', 
+width: '50%', 
+willChange: 'transform', 
+  fontFamily: [
+   '"Segoe UI"'
+
+
+  ].join(','),
+  '&:hover': {
+    color: '#fff',
+    backgroundColor: '#1A1A1A',
+    transform: 'translateY(-2px)',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    transform:' translateY(0)',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
 
 interface DndDrawerCompProps {
   metaDataList: MetaData[];
@@ -51,7 +100,7 @@ const DndDrawerComp: React.VFC<DndDrawerCompProps> = ({
       </IconButton>
       <Box sx={{ width: 350, margin: "10px" }} role="presentation">
         <div>
-          <Typography>
+          <Typography sx= {{fontFamily: "Segoe UI" }}>
             Cols
             <IconButton size="small" onClick={addCol}>
               <AddIcon />
@@ -94,7 +143,7 @@ const DndDrawerComp: React.VFC<DndDrawerCompProps> = ({
         </Grid>
         <Divider />
 
-        <Grid container columns={12} sx={{ marginTop: "5px" }}>
+        <Grid container alignItems="center" columns={12} sx={{ marginTop: "5px" }}>
           {Array.from(Array(cols * rows).keys()).map((value) => (
             <DropComp
               metaDataList={metaDataList}
@@ -105,14 +154,14 @@ const DndDrawerComp: React.VFC<DndDrawerCompProps> = ({
             />
           ))}
         </Grid>
-
-        <Button
-          sx={{ marginTop: "5px" }}
+  
+        <ButtonStyle 
           variant="contained"
           onClick={() => setURL(generateGridURL(metaDataList, rows, cols))}
         >
           Generate URL
-        </Button>
+        </ButtonStyle>
+      
         <CopyToClipboardButtonComp url={url} />
         <div>
           <TextField

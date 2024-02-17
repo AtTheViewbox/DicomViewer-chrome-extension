@@ -1,28 +1,15 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-
-import Typography from '@mui/material/Typography';
-
-
-
-
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const HeaderComp: React.VFC = () => {
-
   return (
-
-    <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static" color="transparent" elevation={0}>
-
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          DicomViewer URL Generator
-        </Typography>
-      
-    </AppBar>
-  </Box>
-
-
+    <div>
+      <Typography variant="h5" sx={{ fontFamily: "Segoe UI" }}>
+        DicomViewer URL Generator
+      </Typography>
+    </div>
   );
-}
-export default HeaderComp
+};
+export default HeaderComp;

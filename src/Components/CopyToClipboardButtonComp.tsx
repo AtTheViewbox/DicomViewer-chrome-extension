@@ -17,7 +17,7 @@ const CopyToClipboardButtonComp: React.VFC<CopyToClipboardButtonCompProps>  = ({
     
     return (
         <>
-          <Button onClick={handleClick}><ContentCopyIcon/></Button>
+          <Button onClick={handleClick}><ContentCopyIcon sx={{ color: 'black' }} /></Button>
           <Snackbar
             open={open}
             onClose={() => setOpen(false)}

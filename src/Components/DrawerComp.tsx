@@ -71,7 +71,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
       >
         <CloseIcon />
       </IconButton>
-      <Typography>{metadata.label}</Typography>
+      <Typography sx={{marginLeft: "10px"}}>{metadata.label}</Typography>
       <div style={{ height: "400px", width: "375px" }}>
         <Viewport
           metadataId={metadata.id}
@@ -82,7 +82,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
 
       <Divider />
 
-      <div style={{ marginLeft: "20px" }}>
+      <div style={{ marginLeft: "20px", marginBottom: "10px", marginTop: "10px"}}>
         <Typography>Slice Range</Typography>
         <div>
           <SliderComp
@@ -93,9 +93,9 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
         </div>
       </div>
 
-      <Box sx={{ margin: "15px" }} role="presentation">
+      <Box sx={{ margin: "10px" }} role="presentation">
         <Grid container spacing={1}>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <Typography>Window Width</Typography>
             <TextField
               hiddenLabel
@@ -107,7 +107,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
             />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <Typography>Window Center</Typography>
             <TextField
               hiddenLabel
@@ -118,7 +118,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
               }
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             {/**fix Ci input */}
             <Typography>Current Slice</Typography>
             <TextField
@@ -130,7 +130,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
               }
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Typography>Zoom</Typography>
             <TextField
               hiddenLabel
@@ -142,7 +142,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
             />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Typography>Pan X</Typography>
             <TextField
               hiddenLabel
@@ -153,7 +153,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
               }
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Typography>Pan Y</Typography>
             <TextField
               hiddenLabel
@@ -164,7 +164,7 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
               }
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={3}>
             <Typography>r</Typography>
             <TextField
               hiddenLabel
