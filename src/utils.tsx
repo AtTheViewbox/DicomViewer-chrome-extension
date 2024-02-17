@@ -89,7 +89,7 @@ export function generateMetaData(list: Array<rawMetaData>) {
     px: "0",
     py: "0",
     r: 0,
-    pad: String(x.images.length).length,
+    pad: x.images[0].split("/").pop()?.split(".")[0].length || 0,
     cord: [-1, -1],
   }));
   return objs;
