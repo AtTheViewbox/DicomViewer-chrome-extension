@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import HeaderComp from "./Components/HeaderComp";
-import Divider from "@mui/material/Divider";
 import { useContext } from "react";
 import { MetaDataListContext } from "./Context/DataContext";
 import Card from "@mui/material/Card";
@@ -14,7 +13,6 @@ import { MetaData } from "./utils";
 import DndDrawerComp from "./Components/DndDrawerComp";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { createTheme } from '@mui/material/styles';
 import './App.css';
 
 
@@ -37,7 +35,7 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className='front'>
         <HeaderComp />
-        <Divider />
+
    
        <div className = 'button-container'>
         <button className='button' onClick={handleClick2} >

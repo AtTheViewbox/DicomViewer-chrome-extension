@@ -53,7 +53,6 @@ willChange: 'transform',
   '&:hover': {
     color: '#fff',
     backgroundColor: '#1A1A1A',
-    boxShadow:' rgba(0, 0, 0, 0.25) 0 8px 15px',
     transform: 'translateY(-2px)',
   },
   '&:active': {
@@ -102,7 +101,7 @@ const DndDrawerComp: React.VFC<DndDrawerCompProps> = ({
       <Box sx={{ width: 350, margin: "10px" }} role="presentation">
         <div>
           <Typography sx= {{fontFamily: "Segoe UI" }}>
-            <p>Cols</p>
+            Cols
             <IconButton size="small" onClick={addCol}>
               <AddIcon />
             </IconButton>
