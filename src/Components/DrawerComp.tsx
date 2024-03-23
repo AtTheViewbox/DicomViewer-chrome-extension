@@ -23,13 +23,19 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
 }) => {
   const [metadata, setMetadata] = useState<MetaData>(initalValues);
   const [stateFlag, setStateFlag] = useState(false);
-  const { metaDataList, setMetaDataList } = useContext(MetaDataListContext);
+  const { metaDataList, setMetaDataList,setValue } = useContext(MetaDataListContext);
 
   useMemo(() => {
     // @ts-ignore
     setMetadata(metaDataList.find((x) => x.id === metadataId));
   }, [metaDataList]);
 
+  
+  const handleClose = () => {
+    setDrawerState(false)
+   
+    setValue(metaDataList);
+  };
   const saveStates = (
     key: string,
     event: React.ChangeEvent<HTMLInputElement>
@@ -67,9 +73,10 @@ const DrawerComp: React.VFC<DrawerCompProps> = ({
       <IconButton
         aria-label="delete"
         size="small"
-        onClick={() => setDrawerState(false)}
+        onClick={() => handleClose()}
       >
         <CloseIcon />
+        Save and Exit
       </IconButton>
       <Typography sx={{marginLeft: "10px"}}>{metadata.label}</Typography>
       <div style={{ height: "400px", width: "375px" }}>
