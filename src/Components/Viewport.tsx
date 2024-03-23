@@ -17,9 +17,10 @@ const Viewport: React.VFC<ViewportProps> = ({
   stateFlag,
   setStateFlag,
 }) => {
-  const { metaDataList, setMetaDataList } = useContext(MetaDataListContext);
+  const { metaDataList, setMetaDataList,setValue } = useContext(MetaDataListContext);
   const refValue = useRef(metaDataList);
   const [metadata, setMetadata] = useState<MetaData>(initalValues);
+  
   const stack = recreateUriStringList(
     metadata.prefix,
     metadata.suffix,
@@ -92,11 +93,7 @@ const Viewport: React.VFC<ViewportProps> = ({
         );
         viewport.setZoom(metadata.z);
         viewport.setPan([Number(metadata.px), Number(metadata.py)]);
-        console.log( metadata.ww,metadata.wc)
-        
-        for(var k in viewport.getProperties()){
-          console.log(k)
-       }
+
        viewport.setProperties({
         voiRange: cornerstone.utilities.windowLevel.toLowHighRange(metadata.ww, metadata.wc),
         isComputedVOI: false,
