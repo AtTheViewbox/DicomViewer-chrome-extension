@@ -45,9 +45,6 @@ const Viewport: React.VFC<ViewportProps> = ({
       //@ts-ignoreS
       const window = cornerstone.utilities.windowLevel.toWindowLevel(vp.voiRange.lower,vp.voiRange.upper);
       const [x, y] = vp.getPan();
-      //@ts-ignoreS
-      console.log( vp.voiRange.lower,vp.voiRange.upper)
-      console.log( window.windowWidth,window.windowCenter)
       setMetaDataList(
         [...refValue.current].map((object) => {
           if (object.id === metadata.id) {
