@@ -11,21 +11,19 @@ let a = injectScript(chrome.runtime.getURL("inject.js"), "body");
 window.addEventListener(
   "message",
   (message) => {
-    console.log(message.data);
+  
     let metadata = message.data.data.map((x) => ({
       label: x.label,
       modality: x.modality,
       id: x._id,
       images: x.instances.map((y) => y.url),
     }));
-
-    console.log(generateMetaData(metadata));
-    chrome.storage.local.set({ PAC_DATA: generateMetaData(metadata) });
+    chrome.storage.local.set({ PAC_DATA: generateMetaData(metadata,message.data.url) });
   },
   { once: true }
 );
 
-function generateMetaData(list) {
+function generateMetaData(list,url) {
   var objs = list.map((x) => ({
     thumbnail: x.images[0],
     label: x.label,
@@ -36,8 +34,8 @@ function generateMetaData(list) {
     start_slice: 1,
     end_slice: x.images.length,
     max_slice: x.images.length,
-    ww: 1400,
-    wc: 1200,
+    ww: checkUrlQuery(x.id,url,"ww")?checkUrlQuery(x.id,url,"ww"):1400,
+    wc: checkUrlQuery(x.id,url,"wc")?checkUrlQuery(x.id,url,"wc"):1200,
     ci: 1,
     z: 1,
     px: "0",
@@ -47,6 +45,16 @@ function generateMetaData(list) {
     cord: [-1, -1],
   }));
   return objs;
+}
+function checkUrlQuery(id,url, search){
+    const urlParams = new URLSearchParams(url.split("?")[1]);
+    for (const [key, value] of urlParams.entries()) {
+    }
+    if (((urlParams.get("s")==id) && urlParams.has(search))){
+        return urlParams.get(search)
+    }
+    return 0
+
 }
 function longestCommonPrefix(strs) {
   if (strs.length === 0) return "";

@@ -44,7 +44,9 @@ const Viewport: React.VFC<ViewportProps> = ({
       //@ts-ignoreS
       const window = cornerstone.utilities.windowLevel.toWindowLevel(vp.voiRange.lower,vp.voiRange.upper);
       const [x, y] = vp.getPan();
-
+      //@ts-ignoreS
+      console.log( vp.voiRange.lower,vp.voiRange.upper)
+      console.log( window.windowWidth,window.windowCenter)
       setMetaDataList(
         [...refValue.current].map((object) => {
           if (object.id === metadata.id) {
@@ -90,14 +92,15 @@ const Viewport: React.VFC<ViewportProps> = ({
         );
         viewport.setZoom(metadata.z);
         viewport.setPan([Number(metadata.px), Number(metadata.py)]);
-
-        viewport.setProperties({
-          voiRange: cornerstone.utilities.windowLevel.toLowHighRange(
-            metadata.ww,
-            metadata.wc
-          ),
-          isComputedVOI: false,
-        });
+        console.log( metadata.ww,metadata.wc)
+        
+        for(var k in viewport.getProperties()){
+          console.log(k)
+       }
+       viewport.setProperties({
+        voiRange: cornerstone.utilities.windowLevel.toLowHighRange(metadata.ww, metadata.wc),
+        isComputedVOI: false,
+      });
 
         viewport.render();
       }
@@ -162,6 +165,7 @@ const Viewport: React.VFC<ViewportProps> = ({
             metadata.ci - metadata.start_slice
           );
           viewport.setZoom(metadata.z);
+    
           viewport.setProperties({
             voiRange: cornerstone.utilities.windowLevel.toLowHighRange(
               metadata.ww,

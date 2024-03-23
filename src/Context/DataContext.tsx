@@ -64,7 +64,7 @@ export const DataProvider = ({ children }: PropsWithChildren<{}>) => {
   }, []);
   useEffect(() => {
     setMetaDataList(value);
-    console.log(value)
+  
   }, [value]);
   return (
     <RenderEngineContext.Provider value={renderingEngine}>
