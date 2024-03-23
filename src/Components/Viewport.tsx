@@ -17,9 +17,10 @@ const Viewport: React.VFC<ViewportProps> = ({
   stateFlag,
   setStateFlag,
 }) => {
-  const { metaDataList, setMetaDataList } = useContext(MetaDataListContext);
+  const { metaDataList, setMetaDataList,setValue } = useContext(MetaDataListContext);
   const refValue = useRef(metaDataList);
   const [metadata, setMetadata] = useState<MetaData>(initalValues);
+  
   const stack = recreateUriStringList(
     metadata.prefix,
     metadata.suffix,
@@ -44,7 +45,6 @@ const Viewport: React.VFC<ViewportProps> = ({
       //@ts-ignoreS
       const window = cornerstone.utilities.windowLevel.toWindowLevel(vp.voiRange.lower,vp.voiRange.upper);
       const [x, y] = vp.getPan();
-
       setMetaDataList(
         [...refValue.current].map((object) => {
           if (object.id === metadata.id) {
@@ -91,13 +91,10 @@ const Viewport: React.VFC<ViewportProps> = ({
         viewport.setZoom(metadata.z);
         viewport.setPan([Number(metadata.px), Number(metadata.py)]);
 
-        viewport.setProperties({
-          voiRange: cornerstone.utilities.windowLevel.toLowHighRange(
-            metadata.ww,
-            metadata.wc
-          ),
-          isComputedVOI: false,
-        });
+       viewport.setProperties({
+        voiRange: cornerstone.utilities.windowLevel.toLowHighRange(metadata.ww, metadata.wc),
+        isComputedVOI: false,
+      });
 
         viewport.render();
       }
@@ -162,6 +159,7 @@ const Viewport: React.VFC<ViewportProps> = ({
             metadata.ci - metadata.start_slice
           );
           viewport.setZoom(metadata.z);
+    
           viewport.setProperties({
             voiRange: cornerstone.utilities.windowLevel.toLowHighRange(
               metadata.ww,
