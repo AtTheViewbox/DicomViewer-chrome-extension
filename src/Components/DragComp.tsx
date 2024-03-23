@@ -1,6 +1,5 @@
 import { MetaData } from "../utils";
 import * as React from "react";
-import Card from "@mui/material/Card";
 import { useDrag } from "react-dnd";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
